@@ -124,11 +124,9 @@ def check_a_string_for_special_characters(string)
 	!string.chars.all?{|char| non_special_chars.include?(char)}
 end
 
-
 def get_upper_limit_of(range)
 	range.end
 end
-
 
 def is_a_3_dot_range?(range)
 	range.exclude_end?
@@ -140,7 +138,7 @@ def square_root_of(number)
 end
 
 def word_count_a_file(path)
-	%x( wc -w #{path} ).to_i
+	%x(wc -w #{path}).to_i
 end
 
 def call_method_from_string(string)
@@ -166,4 +164,29 @@ def count_words_of_each_length_in_a_file(path)
 	i = Hash.new(0)
 	IO.read('lorem.txt').split(/\W+/).group_by{|word| word.length}.each{|k, v| i[k]= v.length}
 	i
+end
+
+def fizzbuzz(number)
+	return 'FizzBuzz' if divisible_by_three(number) && divisible_by_five(number)
+	return 'Fizz' if divisible_by_three(number)
+	return 'Buzz' if divisible_by_five(number)
+	number
+end
+
+def divisible_by_three(number)
+	modulo(number, 3) == 0 
+end
+
+def divisible_by_five(number)
+	modulo(number, 5) == 0
+end
+
+def modulo(divisor, divider)
+	divisor - divisor/divider*divider
+end
+
+def print_lyrics(n)
+	string = ""
+	n.downto(0){|number| string << "#{ number == 0 ? 'No more b' : "#{number} b"}ottle#{'s' if number !=1 } of beer on the wall, #{ number == 0 ? 'no more' : number} bottle#{ 's' if number != 1 } of beer.#{ number == 0 ? ".. Go to the store and buy some more...\n#{n} bottle#{'s' if n !=1 } of beer." : "\nTake one down and pass it around, #{number == 1 ? 'no more' : number-1} bottle#{'s' if number != 2} of beer on the wall.\n\n"}"}
+	string
 end

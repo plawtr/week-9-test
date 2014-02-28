@@ -220,4 +220,16 @@ describe 'the Friday test :)' do
     n = count_words_of_each_length_in_a_file('lorem.txt') || []
     expect(Hash[n.sort]).to eq({1=>1, 2=>5, 3=>7, 4=>12, 5=>14, 6=>4, 7=>8, 8=>6, 9=>6, 10=>2, 11=>2, 12=>3}) 
   end
+
+  specify 'FizzBuzz' do
+    n = (1..15).to_a.map{|number| fizzbuzz(number)}
+    expect(n).to eq([1, 2, "Fizz", 4, "Buzz", "Fizz", 7, 8, "Fizz", "Buzz", 11, "Fizz", 13, 14, "FizzBuzz"]) 
+  end
+
+  specify 'Print Lyrics' do
+    
+    expect(print_lyrics(3)).to eq("3 bottles of beer on the wall, 3 bottles of beer.\nTake one down and pass it around, 2 bottles of beer on the wall.\n\n2 bottles of beer on the wall, 2 bottles of beer.\nTake one down and pass it around, 1 bottle of beer on the wall.\n\n1 bottle of beer on the wall, 1 bottle of beer.\nTake one down and pass it around, no more bottles of beer on the wall.\n\nNo more bottles of beer on the wall, no more bottles of beer... Go to the store and buy some more...\n3 bottles of beer.") 
+    expect(print_lyrics(1)).to eq("1 bottle of beer on the wall, 1 bottle of beer.\nTake one down and pass it around, no more bottles of beer on the wall.\n\nNo more bottles of beer on the wall, no more bottles of beer... Go to the store and buy some more...\n1 bottle of beer.")
+    expect(print_lyrics(0)).to eq("No more bottles of beer on the wall, no more bottles of beer... Go to the store and buy some more...\n0 bottles of beer.")  
+  end
 end
